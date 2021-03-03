@@ -55,7 +55,7 @@ var json = {
       },
     ]
   };
-log(json.category
+log(json.colors.length
     );
 function log(logu){
 console.log(logu);
