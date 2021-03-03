@@ -1,0 +1,18 @@
+h1{
+	color: blue;
+}
+body{
+	text-align: center;
+	font-family: arial;
+}
+.selectCl{
+	width: 350px;
+}
+.navBar{
+	text-align: center;
+	font-family: arial;
+	color: blue;
+	font-size: larger;
+background-color: green;
+display: inline-flex;
+}
