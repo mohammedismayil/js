@@ -2,6 +2,7 @@ import React from "react";
 import {useState} from 'react'
 import Header from "./Components/Header";
 import Tasks from "./Components/Tasks"
+import AddTask from "./Components/AddTask"
 // function App() {
 //   return (
 //     <div className="App">
@@ -40,7 +41,12 @@ const App = () => {
 
    setTasks(tasks.filter((task) =>task.id !== id ))
  }
-
+const addTask = (task) => {
+  console.log(task)
+const id = Math.floor(Math.random()*10000) + 1
+const newTask = {id , ...task}
+setTasks([...tasks, newTask])
+}
  function onToggleReminder(id) {
   console.log("toggle this task of id",id)
 
@@ -50,7 +56,9 @@ const App = () => {
  }
 return (
   <div>
+  
     <Header />
+    <AddTask onAdd = {addTask}/>
     { tasks.length > 0 ? 
       < Tasks  tasks = {tasks} onDelete = {deleteTask} onToggle = {onToggleReminder}/> : 'No tasks to show'}
   </div>
