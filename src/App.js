@@ -11,7 +11,8 @@ import AddTask from "./Components/AddTask"
 //   );
 // }
 const App = () => {
-
+const [count,setCount] = useState(0)
+const [showAdd,setAdd] = useState(false)
   const [tasks,setTasks] = useState([
   
         
@@ -34,7 +35,18 @@ const App = () => {
     }
  
 ])
+const addCount = () => {
+setCount(count+1)
+console.log('value of count'+count)
 
+}
+
+// For show / hide add button
+const onShowAdd = () => {
+  console.log(showAdd ? "show the add view" : "hide the view")
+  // showAdd = !showAdd
+  setAdd(!showAdd)
+}
 //For deleting the task
  function deleteTask(id) {
    console.log("delete this task of id",id)
@@ -57,10 +69,12 @@ setTasks([...tasks, newTask])
 return (
   <div>
   
-    <Header />
-    <AddTask onAdd = {addTask}/>
+    <Header title = "Add" onShowAdd = {onShowAdd} showAdd = {showAdd}/>
+    { showAdd &&  <AddTask onAdd = {addTask}/> }
+   
     { tasks.length > 0 ? 
       < Tasks  tasks = {tasks} onDelete = {deleteTask} onToggle = {onToggleReminder}/> : 'No tasks to show'}
+      <button onClick = {addCount}> Counter {count}</button>
   </div>
 
 )

@@ -1,14 +1,12 @@
 import Button from "./Button";
 
-const Header = (props)  => {
+const Header = ({title,onShowAdd,showAdd}) => {
 
-    const onClick = (e) => {
-        console.log("im clicked from header component class")
-    }
+    
     return (
         <header className='header'>
-            <h1>im from Header {props.title}</h1>
-            <Button name='Add' onClick = {onClick} />
+            <h1>im from Header {title}</h1>
+            <Button name = {showAdd ? 'close' : 'add'} onClick = {onShowAdd} />
         </header>
     )
 }
