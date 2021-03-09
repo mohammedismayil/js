@@ -13,28 +13,7 @@ import AddTask from "./Components/AddTask"
 const App = () => {
 const [count,setCount] = useState(0)
 const [showAdd,setAdd] = useState(false)
-  const [tasks,setTasks] = useState([
-  
-        
-    {
-      "id": 1,
-      "text": "Doctors Appointment",
-      "day": "Feb 5th at 2:30pm",
-      "reminder": true
-    },
-    {
-      "id": 2,
-      "text": "Meeting at School",
-      "day": "Feb 6th at 1:30pm",
-      "reminder": true
-    },{
-      "id": 3,
-      "text": "Games at School",
-      "day": "Feb 8th at 1:30pm",
-      "reminder": true
-    }
- 
-])
+  const [tasks,setTasks] = useState([])
 const addCount = () => {
 setCount(count+1)
 console.log('value of count'+count)
