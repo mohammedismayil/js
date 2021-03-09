@@ -6,7 +6,7 @@ const Header = ({title,onShowAdd,showAdd}) => {
     return (
         <header className='header'>
             <h1>im from Header {title}</h1>
-            <Button name = {showAdd ? 'close' : 'add'} onClick = {onShowAdd} />
+            <Button color = { showAdd ? 'red' : 'green'} name = {showAdd ? 'close' : 'add'} onClick = {onShowAdd} />
         </header>
     )
 }

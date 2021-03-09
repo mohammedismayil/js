@@ -4,7 +4,7 @@ const Button = (props) => {
     //     console.log("im clicked button class")
     // }
 return (
-    <button className='btn' onClick = {props.onClick}>{props.name}</button>
+    <button style = {{backgroundColor: props.color}} className='btn' onClick = {props.onClick}>{props.name}</button>
 )
 }
 export default Button

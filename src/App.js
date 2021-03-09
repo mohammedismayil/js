@@ -43,9 +43,10 @@ console.log('value of count'+count)
 
 // For show / hide add button
 const onShowAdd = () => {
-  console.log(showAdd ? "show the add view" : "hide the view")
+  
   // showAdd = !showAdd
   setAdd(!showAdd)
+  console.log(!showAdd ? "show the add view" : "hide the view")
 }
 //For deleting the task
  function deleteTask(id) {
