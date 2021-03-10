@@ -3,8 +3,14 @@
     {
       "text": "f",
       "day": "122",
-      "reminder": false,
+      "reminder": true,
       "id": 1
+    },
+    {
+      "text": "hey etttt",
+      "day": "yuyhu",
+      "reminder": false,
+      "id": 2
     }
   ]
 }

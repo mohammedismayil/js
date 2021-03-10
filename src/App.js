@@ -1,8 +1,11 @@
 import React from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import {useState,useEffect} from 'react'
 import Header from "./Components/Header";
 import Tasks from "./Components/Tasks"
 import AddTask from "./Components/AddTask"
+import Footer from "./Components/Footer"
+import About from "./Components/About"
 // function App() {
 //   return (
 //     <div className="App">
@@ -33,6 +36,7 @@ const onShowAdd = () => {
  const res = await fetch(`http://localhost:5000/tasks/${id}`,{
   method: 'DELETE'
 })
+console.log(res)
   //  const data = await res.json 
   //  setTasks([data])
   const tasksFromServer = await fetchTasks()
@@ -56,11 +60,21 @@ const addTask =  async (task) => {
 // const newTask = {id , ...task}
 // setTasks([...tasks, newTask])
 }
- function onToggleReminder(id) {
+ const onToggleReminder = async (id) => {
   console.log("toggle this task of id",id)
+const taskToggle = await fetchTask(id)
+const updTask = {...taskToggle,reminder: !taskToggle.reminder}
+const res = await fetch(`http://localhost:5000/tasks/${id}`,
+{
+  headers:{
+    'Content-type': 'application/json'
+  },method:'PUT',
+  body: JSON.stringify(updTask)
+})
+const data = await res.json()
 
   setTasks(tasks.map((task) =>  
-  task.id === id ? {...task,reminder:!task.reminder}: task
+  task.id === id ? {...task,reminder:data.reminder}: task
   ))
  }
 
@@ -81,17 +95,35 @@ const addTask =  async (task) => {
   console.log(data)
   return data
   }
-
+ // Fetch tasks from server 
+ const fetchTask = async (id)  => {
+  const response = await fetch(`http://localhost:5000/tasks/${id}`)
+  const data = await response.json()
+  return data
+  }
 return (
-  <div>
+  <Router>
+ <div>
   
-    <Header title = "Add" onShowAdd = {onShowAdd} showAdd = {showAdd}/>
-    { showAdd &&  <AddTask onAdd = {addTask}/> }
-   
-    { tasks.length > 0 ? 
-      < Tasks  tasks = {tasks} onDelete = {deleteTask} onToggle = {onToggleReminder}/> : 'No tasks to show'}
-      <button onClick = {addCount}> Counter {count}</button>
-  </div>
+  <Header title = "Add" onShowAdd = {onShowAdd} showAdd = {showAdd}/>
+  
+<Route
+ path='/' 
+ exact 
+ render = {(props)=> (
+<>
+{ showAdd &&  <AddTask onAdd = {addTask}/> }
+ 
+  { tasks.length > 0 ? 
+    < Tasks  tasks = {tasks} onDelete = {deleteTask} onToggle = {onToggleReminder}/> : 'No tasks to show'}
+    <button onClick = {addCount}> Counter {count}</button>
+</>
+)} />
+    <Route path='/about' component={About}/>
+    < Footer />
+</div>
+  </Router>
+ 
 
 )
 //
