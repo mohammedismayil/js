@@ -1,5 +1,5 @@
 import React from "react";
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import Header from "./Components/Header";
 import Tasks from "./Components/Tasks"
 import AddTask from "./Components/AddTask"
@@ -28,16 +28,33 @@ const onShowAdd = () => {
   console.log(!showAdd ? "show the add view" : "hide the view")
 }
 //For deleting the task
- function deleteTask(id) {
+ const deleteTask = async (id) => {
    console.log("delete this task of id",id)
-
-   setTasks(tasks.filter((task) =>task.id !== id ))
+ const res = await fetch(`http://localhost:5000/tasks/${id}`,{
+  method: 'DELETE'
+})
+  //  const data = await res.json 
+  //  setTasks([data])
+  const tasksFromServer = await fetchTasks()
+  setTasks(tasksFromServer)
  }
-const addTask = (task) => {
+const addTask =  async (task) => {
   console.log(task)
-const id = Math.floor(Math.random()*10000) + 1
-const newTask = {id , ...task}
-setTasks([...tasks, newTask])
+
+  const res  = await fetch('http://localhost:5000/tasks',{
+    method:'POST',
+    headers:{
+      'Content-type': 'application/json'
+    },
+    body:JSON.stringify(task)
+  })
+
+  const data = await res.json()
+
+  setTasks([...tasks, data])
+// const id = Math.floor(Math.random()*10000) + 1
+// const newTask = {id , ...task}
+// setTasks([...tasks, newTask])
 }
  function onToggleReminder(id) {
   console.log("toggle this task of id",id)
@@ -46,6 +63,25 @@ setTasks([...tasks, newTask])
   task.id === id ? {...task,reminder:!task.reminder}: task
   ))
  }
+
+ useEffect(() => {
+  
+  const getTasks = async ()  => {
+  const tasksFromServer = await fetchTasks()
+  setTasks(tasksFromServer)
+  }
+  getTasks()
+
+ }, [])
+
+ // Fetch tasks from server 
+ const fetchTasks = async ()  => {
+  const response = await fetch('http://localhost:5000/tasks')
+  const data = await response.json()
+  console.log(data)
+  return data
+  }
+
 return (
   <div>
   
