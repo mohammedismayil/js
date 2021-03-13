@@ -95,7 +95,7 @@ const data = await res.json()
   console.log(data)
   return data
   }
- // Fetch tasks from server 
+ // Fetch particular task from server 
  const fetchTask = async (id)  => {
   const response = await fetch(`http://localhost:5000/tasks/${id}`)
   const data = await response.json()
