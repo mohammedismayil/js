@@ -30,5 +30,13 @@
       "reminder": false,
       "id": 6
     }
-  ]
+  ],
+  "user_list": [{
+    "name": "typicode",
+    "email":"hey@gmail.com"
+  },
+  {
+    "name": "ismayil",
+    "email":"hey@gmdail.com"
+  }]
 }

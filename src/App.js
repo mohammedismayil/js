@@ -6,22 +6,12 @@ import Tasks from "./Components/Tasks"
 import AddTask from "./Components/AddTask"
 import Footer from "./Components/Footer"
 import About from "./Components/About"
-import {withRouter} from 'react-router-dom';
-
-import { useHistory } from "react-router-dom";
-// function App() {
-//   return (
-//     <div className="App">
-//      <Header/>
-//     </div>
-//   );
-// }
+import AddUser from "./Components/AddUser"
+import UserLists from "./Components/UserLists"
 const App = () => {
 const [count,setCount] = useState(0)
 const [showAdd,setAdd] = useState(false)
   const [tasks,setTasks] = useState([])
-  const history = useHistory();
-
 const addCount = () => {
 setCount(count+1)
 console.log('value of count'+count)
@@ -86,17 +76,14 @@ const data = await res.json()
   const data = await response.json()
   return data
   }
-  // for moving to another page - add user form
-  const moveToAddUser = () => {
-    history.push('/Adduser')
-  };
+ 
 return (
   <Router>
  <div>
-  
+  {/* <ButtonAppBar /> */}
   <Header title = "Add" onShowAdd = {onShowAdd} showAdd = {showAdd}/>
-  
-<Route
+  <switch>
+  <Route
  path='/' 
  exact 
  render = {(props)=> (
@@ -106,10 +93,15 @@ return (
   { tasks.length > 0 ? 
     < Tasks  tasks = {tasks} onDelete = {deleteTask} onToggle = {onToggleReminder}/> : 'No tasks to show'}
     <button onClick = {addCount}> Counter {count}</button>
-    <button onClick={moveToAddUser}>Add User</button>
+    <Link to='/AddUser'>Adduser</Link>
+    <Link to='/Userlist'>ViewUsers</Link>
 </>
 )} />
     <Route path='/about' component={About}/>
+    <Route path='/Adduser' component={AddUser}/>
+    <Route path='/Userlist' component={UserLists} />
+  </switch>
+
     < Footer />
 </div>
   </Router>
