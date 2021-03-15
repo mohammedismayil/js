@@ -29,14 +29,64 @@
       "day": "dtfgdg",
       "reminder": false,
       "id": 6
+    },
+    {
+      "text": "wwq",
+      "day": "2121",
+      "reminder": true,
+      "id": 7
     }
   ],
-  "user_list": [{
-    "name": "typicode",
-    "email":"hey@gmail.com"
-  },
-  {
-    "name": "ismayil",
-    "email":"hey@gmdail.com"
-  }]
+  "user_list": [
+    {
+      "username": "typicode",
+      "email": "hey@gmail.com",
+      "id": 1
+    },
+    {
+      "username": "ismayil",
+      "email": "hey@gmdail.com",
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "username": "fsdfds",
+      "email": "fdsfdsfdsf",
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "username": "fsdfds",
+      "email": "fdsfdsfdsfee",
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "email": "hello",
+      "username": "marya",
+      "id": 10
+    },
+    {
+      "username": "fsdfdsdss",
+      "email": "fdsfdsfdsfee",
+      "id": 11
+    },
+    {
+      "username": "fsdfdsdss",
+      "email": "fdsfdsfdsfee",
+      "id": 12
+    }
+  ]
 }

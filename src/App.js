@@ -8,6 +8,8 @@ import Footer from "./Components/Footer"
 import About from "./Components/About"
 import AddUser from "./Components/AddUser"
 import UserLists from "./Components/UserLists"
+import UserCards from "./Components/Cards"
+import './index.css'
 const App = () => {
 const [count,setCount] = useState(0)
 const [showAdd,setAdd] = useState(false)
@@ -101,7 +103,7 @@ return (
     <Route path='/Adduser' component={AddUser}/>
     <Route path='/Userlist' component={UserLists} />
   </switch>
-
+<UserCards />
     < Footer />
 </div>
   </Router>

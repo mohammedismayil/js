@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
-
+import Userlist from "./Userlist"
 const UserLists = () => {
 
     const [users,setUsers] = useState([])
@@ -21,7 +21,7 @@ useEffect(() => {
         <>
        
             {users.map((user)=>
-( <h3> {user.name} </h3>)
+( <Userlist user={user} />)
 
 )
 }
