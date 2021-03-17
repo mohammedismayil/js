@@ -65,7 +65,7 @@ class UserCards extends Component {
                       ", " +
                       this.uppercase(data.location.state)}
                     <br />
-                    <span className="phone">{data.phone}</span>
+                    <span className="phone">{data.location.timezone.description}</span>
                   </p>
                 </div>
               </div>

@@ -9,8 +9,21 @@ import About from "./Components/About"
 import AddUser from "./Components/AddUser"
 import UserLists from "./Components/UserLists"
 import UserCards from "./Components/Cards"
+import ReactDOM from 'react-dom';
 import './index.css'
+  ReactDOM.render(
+    // <React.StrictMode>
+      // <App />
+      // console.log('during rendering'),
+      // <UserCards />
+    // </React.StrictMode>,
+    // ,
+    <div> hello i am from another js file </div>,
+    // document.getElementById('root'),
+    document.getElementById('mySecondApp')
+  );
 const App = () => {
+
 const [count,setCount] = useState(0)
 const [showAdd,setAdd] = useState(false)
   const [tasks,setTasks] = useState([])
